@@ -1,0 +1,3 @@
+#!/bin/sh
+# today -- print today's date in a fixed format.
+date '+%A, %d %B %Y'

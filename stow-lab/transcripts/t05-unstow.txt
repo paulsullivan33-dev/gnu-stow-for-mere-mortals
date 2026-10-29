@@ -1,0 +1,26 @@
+$ printf ... > "$HOME/.profile"
+(exit 0)
+
+$ cd "$HOME/dotfiles"
+(exit 0)
+
+$ stow -D scripts editor shell
+(exit 0)
+
+$ ls -la "$HOME"
+total 4
+drwxrwx--- 1 root root 32 Oct 29 17:45 .
+drwxrwx--- 1 root root  8 Oct 29 17:45 ..
+-rw-rw---- 1 root root 44 Oct 29 17:45 .profile
+drwxrwx--- 1 root root 36 Oct 29 17:45 dotfiles
+(exit 0)
+
+$ find "$HOME/dotfiles" -type f | sort
+/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/dotfiles/editor/.config/nvim/init.vim
+/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/dotfiles/editor/.vimrc
+/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/dotfiles/scripts/bin/greet
+/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/dotfiles/scripts/bin/today
+/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/dotfiles/shell/.bash_aliases
+/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/dotfiles/shell/.bashrc
+/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/dotfiles/shell/.config/bash/extra.sh
+(exit 0)

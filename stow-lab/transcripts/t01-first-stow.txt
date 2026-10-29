@@ -1,0 +1,49 @@
+# Scratch home for this transcript: /home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home
+$ cd "$HOME"
+(exit 0)
+
+$ find dotfiles -type f | sort
+dotfiles/editor/.config/nvim/init.vim
+dotfiles/editor/.vimrc
+dotfiles/scripts/bin/greet
+dotfiles/scripts/bin/today
+dotfiles/shell/.bashrc
+dotfiles/shell/.config/bash/extra.sh
+(exit 0)
+
+$ cd dotfiles
+(exit 0)
+
+$ stow editor
+(exit 0)
+
+$ cd "$HOME"
+(exit 0)
+
+$ ls -la
+total 8
+drwxrwx--- 1 root root 42 Oct 29 17:45 .
+drwxrwx--- 1 root root  8 Oct 29 17:45 ..
+lrwxrwxrwx 1 root root 23 Oct 29 17:45 .config -> dotfiles/editor/.config
+lrwxrwxrwx 1 root root 22 Oct 29 17:45 .vimrc -> dotfiles/editor/.vimrc
+drwxrwx--- 1 root root 36 Oct 29 17:45 dotfiles
+(exit 0)
+
+$ readlink .vimrc .config
+dotfiles/editor/.vimrc
+dotfiles/editor/.config
+(exit 0)
+
+$ cat .vimrc
+" A small sample editor configuration.
+set number
+set ruler
+set tabstop=4
+set expandtab
+syntax on
+(exit 0)
+
+$ find . -type l | sort
+./.config
+./.vimrc
+(exit 0)

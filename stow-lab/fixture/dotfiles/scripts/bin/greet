@@ -1,0 +1,3 @@
+#!/bin/sh
+# greet -- print a greeting.
+echo "Hello from the scripts package."

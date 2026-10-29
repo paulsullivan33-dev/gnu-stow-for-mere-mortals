@@ -1,0 +1,26 @@
+# Scenario folder: /home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/t06 (dotfiles/ and an empty home/)
+$ printf ... > home/.vimrc
+(exit 0)
+
+$ cat home/.vimrc
+" My own vimrc, written by hand.
+set nocompatible
+(exit 0)
+
+$ stow -d dotfiles -t home editor
+WARNING! stowing editor would cause conflicts:
+  * existing target is neither a link nor a directory: .vimrc
+All operations aborted.
+(exit 1)
+
+$ ls -la home
+total 4
+drwxrwx--- 1 root root 12 Oct 29 17:45 .
+drwxrwx--- 1 root root 24 Oct 29 17:45 ..
+-rw-rw---- 1 root root 50 Oct 29 17:45 .vimrc
+(exit 0)
+
+$ cat home/.vimrc
+" My own vimrc, written by hand.
+set nocompatible
+(exit 0)

@@ -1,0 +1,41 @@
+$ apt-cache policy stow
+stow:
+  Installed: (none)
+  Candidate: 2.3.1-1
+  Version table:
+     2.3.1-1 500
+        500 http://mirror.cogentco.com/pub/linux/ubuntu noble/universe amd64 Packages
+(exit 0)
+
+$ stow --version
+stow (GNU Stow) version 2.3.1
+(exit 0)
+
+$ command -v stow
+/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/.pkg/usr/bin/stow
+(exit 0)
+
+$ head -1 "$(command -v stow)"
+#!/usr/bin/perl
+(exit 0)
+
+$ perl --version | sed -n 2p
+This is perl 5, version 38, subversion 2 (v5.38.2) built for x86_64-linux-gnu-thread-multi
+(exit 0)
+
+$ stow --help | sed -n 1,14p
+stow (GNU Stow) version 2.3.1
+
+SYNOPSIS:
+
+    stow [OPTION ...] [-D|-S|-R] PACKAGE ... [-D|-S|-R] PACKAGE ...
+
+OPTIONS:
+
+    -d DIR, --dir=DIR     Set stow dir to DIR (default is current dir)
+    -t DIR, --target=DIR  Set target to DIR (default is parent of stow dir)
+
+    -S, --stow            Stow the package names that follow this option
+    -D, --delete          Unstow the package names that follow this option
+    -R, --restow          Restow (like stow -D followed by stow -S)
+(exit 0)

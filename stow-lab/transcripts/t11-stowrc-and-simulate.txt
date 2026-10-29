@@ -1,0 +1,30 @@
+$ printf ... > "$HOME/.stowrc"
+(exit 0)
+
+$ cat "$HOME/.stowrc"
+--dir=/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/dotfiles
+--target=/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home
+(exit 0)
+
+$ cd "$WORK"
+(exit 0)
+
+$ stow -n -v scripts
+LINK: bin => dotfiles/scripts/bin
+WARNING: in simulation mode so not modifying filesystem.
+(exit 0)
+
+$ ls "$HOME/bin"
+ls: cannot access '/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/bin': No such file or directory
+(exit 2)
+
+$ stow scripts
+(exit 0)
+
+$ ls -la "$HOME/bin"
+lrwxrwxrwx 1 root root 20 Oct 29 17:45 /home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/bin -> dotfiles/scripts/bin
+(exit 0)
+
+$ "$HOME/bin/greet"
+Hello again from the scripts package.
+(exit 0)

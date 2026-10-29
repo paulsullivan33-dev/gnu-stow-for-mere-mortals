@@ -1,0 +1,51 @@
+# State from t01: editor is stowed, .config is one folded link.
+$ ls -ld "$HOME/.config"
+lrwxrwxrwx 1 root root 23 Oct 29 17:45 /home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/.config -> dotfiles/editor/.config
+(exit 0)
+
+$ cd "$HOME/dotfiles"
+(exit 0)
+
+$ stow shell
+(exit 0)
+
+$ ls -ld "$HOME/.config"
+drwxrwx--- 1 root root 16 Oct 29 17:45 /home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/.config
+(exit 0)
+
+$ ls -la "$HOME/.config"
+total 8
+drwxrwx--- 1 root root 16 Oct 29 17:45 .
+drwxrwx--- 1 root root 56 Oct 29 17:45 ..
+lrwxrwxrwx 1 root root 30 Oct 29 17:45 bash -> ../dotfiles/shell/.config/bash
+lrwxrwxrwx 1 root root 31 Oct 29 17:45 nvim -> ../dotfiles/editor/.config/nvim
+(exit 0)
+
+$ readlink "$HOME/.config/nvim" "$HOME/.config/bash"
+../dotfiles/editor/.config/nvim
+../dotfiles/shell/.config/bash
+(exit 0)
+
+$ stow -D shell
+(exit 0)
+
+$ ls -ld "$HOME/.config"
+lrwxrwxrwx 1 root root 23 Oct 29 17:45 /home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/.config -> dotfiles/editor/.config
+(exit 0)
+
+$ readlink "$HOME/.config"
+dotfiles/editor/.config
+(exit 0)
+
+$ stow shell
+(exit 0)
+
+$ ls -la "$HOME"
+total 8
+drwxrwx--- 1 root root 56 Oct 29 17:45 .
+drwxrwx--- 1 root root  8 Oct 29 17:45 ..
+lrwxrwxrwx 1 root root 22 Oct 29 17:45 .bashrc -> dotfiles/shell/.bashrc
+drwxrwx--- 1 root root 16 Oct 29 17:45 .config
+lrwxrwxrwx 1 root root 22 Oct 29 17:45 .vimrc -> dotfiles/editor/.vimrc
+drwxrwx--- 1 root root 36 Oct 29 17:45 dotfiles
+(exit 0)

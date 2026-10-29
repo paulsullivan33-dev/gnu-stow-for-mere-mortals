@@ -1,0 +1,106 @@
+$ make VERSION=1.0
+cc -O2 -Wall -DVERSION_STR='"1.0"' -o hello hello.c
+(exit 0)
+
+$ make install VERSION=1.0 PREFIX=../opt/stow/hello-1.0
+install -d ../opt/stow/hello-1.0/bin
+install -d ../opt/stow/hello-1.0/share/hello
+install -d ../opt/stow/hello-1.0/share/man/man1
+install -m 0755 hello ../opt/stow/hello-1.0/bin/hello
+echo "This message belongs to hello 1.0." \
+    > ../opt/stow/hello-1.0/share/hello/message.txt
+install -m 0644 hello.1 ../opt/stow/hello-1.0/share/man/man1/hello.1
+(exit 0)
+
+$ find ../opt -type f | sort
+../opt/stow/hello-1.0/bin/hello
+../opt/stow/hello-1.0/share/hello/message.txt
+../opt/stow/hello-1.0/share/man/man1/hello.1
+(exit 0)
+
+$ cd ../opt/stow
+(exit 0)
+
+$ stow hello-1.0
+(exit 0)
+
+$ ls -la .. ../bin ../share
+lrwxrwxrwx 1 root root 18 Oct 29 17:45 ../bin -> stow/hello-1.0/bin
+lrwxrwxrwx 1 root root 20 Oct 29 17:45 ../share -> stow/hello-1.0/share
+
+..:
+total 8
+drwxrwx--- 1 root root 24 Oct 29 17:45 .
+drwxrwx--- 1 root root 24 Oct 29 17:45 ..
+lrwxrwxrwx 1 root root 18 Oct 29 17:45 bin -> stow/hello-1.0/bin
+lrwxrwxrwx 1 root root 20 Oct 29 17:45 share -> stow/hello-1.0/share
+drwxrwx--- 1 root root 18 Oct 29 17:45 stow
+(exit 0)
+
+$ ../bin/hello
+hello, version 1.0
+(exit 0)
+
+$ cat ../share/hello/message.txt
+This message belongs to hello 1.0.
+(exit 0)
+
+$ cd ../../hello-src
+(exit 0)
+
+$ make clean && make VERSION=2.0
+rm -f hello
+cc -O2 -Wall -DVERSION_STR='"2.0"' -o hello hello.c
+(exit 0)
+
+$ make install VERSION=2.0 PREFIX=../opt/stow/hello-2.0
+install -d ../opt/stow/hello-2.0/bin
+install -d ../opt/stow/hello-2.0/share/hello
+install -d ../opt/stow/hello-2.0/share/man/man1
+install -m 0755 hello ../opt/stow/hello-2.0/bin/hello
+echo "This message belongs to hello 2.0." \
+    > ../opt/stow/hello-2.0/share/hello/message.txt
+install -m 0644 hello.1 ../opt/stow/hello-2.0/share/man/man1/hello.1
+(exit 0)
+
+$ cd ../opt/stow
+(exit 0)
+
+$ stow hello-2.0
+WARNING! stowing hello-2.0 would cause conflicts:
+  * existing target is stowed to a different package: bin/hello => ../stow/hello-1.0/bin/hello
+  * existing target is stowed to a different package: share/hello/message.txt => ../../stow/hello-1.0/share/hello/message.txt
+  * existing target is stowed to a different package: share/man/man1/hello.1 => ../../../stow/hello-1.0/share/man/man1/hello.1
+All operations aborted.
+(exit 1)
+
+$ stow -D hello-1.0
+(exit 0)
+
+$ stow hello-2.0
+(exit 0)
+
+$ ../bin/hello
+hello, version 2.0
+(exit 0)
+
+$ cat ../share/hello/message.txt
+This message belongs to hello 2.0.
+(exit 0)
+
+$ stow -D hello-2.0
+(exit 0)
+
+$ ls -la ..
+total 0
+drwxrwx--- 1 root root  8 Oct 29 17:45 .
+drwxrwx--- 1 root root 24 Oct 29 17:45 ..
+drwxrwx--- 1 root root 36 Oct 29 17:45 stow
+(exit 0)
+
+$ rm -r hello-1.0 hello-2.0
+(exit 0)
+
+$ find .. -mindepth 1 | sort
+../stow
+(exit 0)

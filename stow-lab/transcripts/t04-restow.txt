@@ -1,0 +1,28 @@
+$ printf ... > "$HOME/dotfiles/shell/.bash_aliases"
+(exit 0)
+
+$ cat "$HOME/dotfiles/shell/.bash_aliases"
+# More aliases.
+alias ..="cd .."
+(exit 0)
+
+$ ls -l "$HOME/.bash_aliases"
+ls: cannot access '/home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/.bash_aliases': No such file or directory
+(exit 2)
+
+$ cd "$HOME/dotfiles"
+(exit 0)
+
+$ stow -R shell
+(exit 0)
+
+$ ls -l "$HOME/.bash_aliases"
+lrwxrwxrwx 1 root root 28 Oct 29 17:45 /home/hatch/workspace/gnu-stow-for-mere-mortals/stow-lab/work/home/.bash_aliases -> dotfiles/shell/.bash_aliases
+(exit 0)
+
+$ sed -i "s/Hello from the scripts package./Hello again from the scripts package./" "$HOME/dotfiles/scripts/bin/greet"
+(exit 0)
+
+$ "$HOME/bin/greet"
+Hello again from the scripts package.
+(exit 0)

@@ -1,0 +1,38 @@
+$ cd "$HOME/dotfiles"
+(exit 0)
+
+$ find plainpkg -type f | sort
+plainpkg/dot-bashrc
+plainpkg/dot-config-note.txt
+(exit 0)
+
+$ stow plainpkg
+(exit 0)
+
+$ ls -la "$HOME"
+total 8
+drwxrwx--- 1 root root 74 Oct 29 17:45 .
+drwxrwx--- 1 root root  8 Oct 29 17:45 ..
+lrwxrwxrwx 1 root root 28 Oct 29 17:45 dot-bashrc -> dotfiles/plainpkg/dot-bashrc
+lrwxrwxrwx 1 root root 37 Oct 29 17:45 dot-config-note.txt -> dotfiles/plainpkg/dot-config-note.txt
+drwxrwx--- 1 root root 16 Oct 29 17:45 dotfiles
+(exit 0)
+
+$ stow -D plainpkg
+(exit 0)
+
+$ stow --dotfiles plainpkg
+(exit 0)
+
+$ ls -la "$HOME"
+total 8
+drwxrwx--- 1 root root 62 Oct 29 17:45 .
+drwxrwx--- 1 root root  8 Oct 29 17:45 ..
+lrwxrwxrwx 1 root root 28 Oct 29 17:45 .bashrc -> dotfiles/plainpkg/dot-bashrc
+lrwxrwxrwx 1 root root 37 Oct 29 17:45 .config-note.txt -> dotfiles/plainpkg/dot-config-note.txt
+drwxrwx--- 1 root root 16 Oct 29 17:45 dotfiles
+(exit 0)
+
+$ readlink "$HOME/.bashrc"
+dotfiles/plainpkg/dot-bashrc
+(exit 0)

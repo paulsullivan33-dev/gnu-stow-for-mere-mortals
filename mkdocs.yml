@@ -1,0 +1,28 @@
+site_name: GNU Stow for Mere Mortals
+site_description: A plain guide to GNU Stow, the symlink farm manager. Keeping dotfiles and hand-built software in tidy packages and linking them into place, stowing and unstowing cleanly, surviving conflicts, adopting files you already have, and running a stow tree for software you build yourself, with the limits stated plainly.
+site_url: https://paulsullivan33-dev.github.io/gnu-stow-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Stow Is: what-stow-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing Stow: installing-stow.md
+  - Your First Stow: your-first-stow.md
+  - Packages and Targets: packages-and-targets.md
+  - Stow, Unstow, Restow: stow-unstow-restow.md
+  - Conflicts — When Stow Says No: conflicts.md
+  - Adopting Files You Already Have: adopting-existing-files.md
+  - Ignore Rules: ignore-rules.md
+  - Installing Software with Stow: installing-software-with-stow.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md
